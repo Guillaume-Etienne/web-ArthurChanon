@@ -9,15 +9,28 @@ interface Props {
 const { title, description = "Professeur de clarinette et formation musicale à Lyon" } = Astro.props;
 const pathname = Astro.url.pathname;
 
-const navLinks = [
+interface NavChild { href: string; label: string; }
+interface NavItem  { href: string; label: string; children?: NavChild[]; }
+
+const navLinks: NavItem[] = [
   { href: '/',             label: 'Accueil' },
-  { href: '/biographie',   label: 'Biographie' },
-  { href: '/enseignement', label: 'Enseignement' },
-  { href: '/tarifs',       label: 'Tarifs' },
-  { href: '/agenda',       label: 'Agenda' },
-  { href: '/galerie',      label: 'Galerie' },
-  { href: '/temoignages',  label: 'Avis' },
-  { href: '/contact',      label: 'Contact' },
+  { href: '/presentation', label: 'Présentation' },
+  {
+    href: '/enseignement',
+    label: 'Enseignement',
+    children: [
+      { href: '/enseignement/clarinette',        label: 'Cours de clarinette' },
+      { href: '/enseignement/formation-musicale', label: 'Cours de formation musicale' },
+      { href: '/enseignement/respiration',        label: 'Respiration' },
+      { href: '/enseignement/chant',              label: 'Initiation au chant' },
+      { href: '/enseignement/piano',              label: 'Cours de piano' },
+    ],
+  },
+  { href: '/tarifs',      label: 'Tarifs' },
+  { href: '/agenda',      label: 'Agenda' },
+  { href: '/galerie',     label: 'Galerie' },
+  { href: '/temoignages', label: 'Avis' },
+  { href: '/contact',     label: 'Contact' },
 ];
 
 function isActive(href: string) {
@@ -41,10 +54,24 @@ function isActive(href: string) {
 
 <header class="header" id="header">
   <div class="container">
-    <a href="/" class="logo">Arthur <span>Chanon</span></a>
+    <a href="/" class="logo">Arthur <span>Reynaud-Chanon</span></a>
     <nav class="nav" id="nav">
-      {navLinks.map(({ href, label }) => (
-        <a href={href} class={isActive(href) ? 'active' : ''}>{label}</a>
+      {navLinks.map(({ href, label, children }) => (
+        children ? (
+          <div class:list={['nav-item', 'has-dropdown', { active: isActive(href) }]}>
+            <a href={href} class:list={[{ active: isActive(href) }]}>{label}</a>
+            <button class="dropdown-toggle" type="button" aria-label="Afficher le sous-menu">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="dropdown">
+              {children.map(child => (
+                <a href={child.href} class:list={[{ active: pathname === child.href }]}>{child.label}</a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a href={href} class:list={[{ active: isActive(href) }]}>{label}</a>
+        )
       ))}
     </nav>
     <button class="burger" id="burger" aria-label="Menu">
@@ -64,9 +91,9 @@ function isActive(href: string) {
     <div class="footer-grid">
       <div class="brand">
         <h4 style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:16px;">
-          Arthur <span style="color:var(--gold); font-style:italic;">Chanon</span>
+          Arthur <span style="color:var(--gold); font-style:italic;">Reynaud-Chanon</span>
         </h4>
-        <p>Professeur de clarinette et de formation musicale, diplômé du CNSMD de Lyon. Passionné par la transmission et convaincu que la musique est accessible à tous ceux qui s'en donnent les moyens.</p>
+        <p>Professeur de clarinette et de formation musicale. Cours en présentiel et à distance. Français, English, Polski, Español.</p>
         <div class="social-links">
           <a href="#" aria-label="Facebook">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -110,7 +137,7 @@ function isActive(href: string) {
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Arthur Chanon. Tous droits réservés.</p>
+      <p>&copy; 2026 Arthur Reynaud-Chanon. Tous droits réservés.</p>
     </div>
   </div>
 </footer>
@@ -129,11 +156,34 @@ function isActive(href: string) {
     nav.classList.toggle('open');
   });
 
-  nav.querySelectorAll('a').forEach(link => {
+  // Ferme le menu mobile sur clic d'un lien simple
+  nav.querySelectorAll('a:not(.has-dropdown a)').forEach(link => {
     link.addEventListener('click', () => {
       burger.classList.remove('active');
       nav.classList.remove('open');
     });
+  });
+
+  // Toggle sous-menu mobile (bouton chevron)
+  nav.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.nav-item')!.classList.toggle('open');
+    });
+  });
+
+  // Ferme le menu mobile quand on clique un lien dans le dropdown
+  nav.querySelectorAll('.dropdown a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      nav.classList.remove('open');
+    });
+  });
+
+  // Ferme les dropdowns desktop au clic en dehors
+  document.addEventListener('click', (e) => {
+    if (!(e.target as Element).closest('.nav-item')) {
+      nav.querySelectorAll('.nav-item.open').forEach(item => item.classList.remove('open'));
+    }
   });
 
   const revealObserver = new IntersectionObserver((entries) => {

@@ -11,7 +11,9 @@
       "Read(//c/gui/web/2026/ArthurChanon2/$TEMP/**)",
       "Bash(cygpath:*)",
       "Bash(npx astro *)",
-      "Bash(Start-Process -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -NoNewWindow)"
+      "Bash(Start-Process -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -NoNewWindow)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\gui\\\\.claude\\\\projects\\\\C--gui-web-2026-ArthurChanon2\\\\memory\")",
+      "Bash(Out-Null)"
     ]
   }
 }

@@ -1,45 +1,75 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import arthurPhoto from '../pics/Arthur.jpg';
 ---
 
-<Layout title="Accueil" description="Cours particuliers de clarinette et formation musicale à Lyon, tous niveaux.">
+<Layout title="Accueil" description="Professeur de clarinette et de formation musicale — cours en présentiel et à distance.">
 
   <!-- HERO -->
   <section class="hero">
     <div class="container hero-content">
       <span class="hero-label">Clarinette & Formation Musicale</span>
-      <h1>La musique est un voyage.<br>Trouvez <em>votre voix</em>.</h1>
-      <p>Cours particuliers de clarinette et de formation musicale pour tous les niveaux, du premier souffle au perfectionnement avancé. Une approche sur mesure, ancrée dans l'exigence et la bienveillance.</p>
-      <div>
+      <h1>Le souffle <em>musical</em>.</h1>
+      <p style="font-size:1rem; color:var(--gold-light); font-weight:400; letter-spacing:0.5px; margin-bottom:28px; font-family:'Playfair Display',serif; font-style:italic;">Professeur de clarinette et de formation musicale</p>
+      <p>Nous naissons tous avec du souffle et de l'oreille — la capacité de chanter juste. Encore faut-il les entretenir et les cultiver. Car pour devenir musicien, ces deux éléments sont aussi essentiels que le travail du solfège (disons plutôt : de la formation musicale) et de l'instrument.</p>
+      <div style="margin-top:40px;">
         <a href="/enseignement" class="btn btn-primary">Découvrir les cours</a>
         <a href="/contact" class="btn btn-outline">Me contacter</a>
       </div>
     </div>
     <div class="hero-visual">
-      <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&q=80" alt="Clarinette dans un cadre élégant" loading="lazy">
+      <img src={arthurPhoto.src} alt="Arthur Reynaud-Chanon" loading="eager">
     </div>
   </section>
 
-  <!-- ABOUT STRIP -->
+  <!-- MA PÉDAGOGIE -->
   <section class="section">
     <div class="container">
       <div class="bio-intro reveal">
         <div class="bio-intro-image">
-          <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=700&q=80" alt="Arthur Chanon" loading="lazy">
+          <img src={arthurPhoto.src} alt="Arthur Reynaud-Chanon, professeur de clarinette" loading="lazy">
         </div>
         <div class="bio-intro-text">
-          <span class="hero-label" style="color:var(--gold-dark)">À propos</span>
-          <h2 style="font-size:clamp(1.8rem,3vw,2.4rem); color:var(--navy); margin-bottom:20px;">Diplômé du CNSMD de Lyon</h2>
-          <p class="lead">Clarinettiste de formation classique passé par les scènes de musique de chambre et les pupitres d'orchestre, j'ai choisi de consacrer l'essentiel de mon temps à la transmission.</p>
-          <p>Chaque élève que j'accueille apporte une sensibilité unique. Mon rôle n'est pas d'imposer une voie, mais d'offrir les outils qui permettront à chacun de trouver la sienne — qu'il s'agisse de passer un examen, d'intégrer un conservatoire ou simplement de jouer pour le plaisir.</p>
-          <a href="/biographie" class="btn btn-primary" style="margin-top:16px;">Découvrir mon parcours</a>
+          <span class="hero-label" style="color:var(--gold-dark)">Pédagogie</span>
+          <h2 style="font-size:clamp(1.8rem,3vw,2.4rem); color:var(--navy); margin-bottom:24px;">Ma Pédagogie</h2>
+          <p class="lead">C'est ainsi qu'est structurée ma pédagogie. Il faut y ajouter une part très personnelle qu'à tort, on tend à occulter comme pour faire croire que tout est facile : l'effort.</p>
+          <p>Ensemble, élèves et professeur, nous parvenons à nous y tenir. Et les résultats sont toujours gratifiants.</p>
+          <p style="margin-top:32px; font-family:'Playfair Display',serif; font-size:1.3rem; font-style:italic; color:var(--gold-dark); letter-spacing:1px;">A R-C</p>
+          <a href="/enseignement" class="btn btn-primary" style="margin-top:28px;">Mon enseignement</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFORMATIONS PRATIQUES -->
+  <section class="section section-alt" style="padding:56px 0;">
+    <div class="container">
+      <div style="display:flex; gap:48px; flex-wrap:wrap; justify-content:center; align-items:center;" class="reveal">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="card-icon" style="background:rgba(201,168,76,0.1); width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--gold);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.75rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); margin-bottom:2px;">Modalités</div>
+            <div style="font-size:0.95rem; color:var(--navy);">Cours en présentiel et à distance</div>
+          </div>
+        </div>
+        <div style="width:1px; height:40px; background:var(--ivory-dark);"></div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="card-icon" style="background:rgba(201,168,76,0.1); width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--gold);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.75rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); margin-bottom:2px;">Langues</div>
+            <div style="font-size:0.95rem; color:var(--navy);">Français, English, Polski, Español</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FEATURE CARDS -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
       <div class="section-header reveal">
         <h2>Tout ce que je propose</h2>
@@ -57,12 +87,12 @@ import Layout from '../layouts/Layout.astro';
           <span class="card-arrow">Explorer →</span>
         </a>
 
-        <a href="/biographie" class="feature-card reveal">
+        <a href="/presentation" class="feature-card reveal">
           <div class="card-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-          <h3>Biographie</h3>
-          <p>Parcours académique, expérience scénique et philosophie d'enseignement d'un musicien passionné par la transmission.</p>
+          <h3>Présentation</h3>
+          <p>Parcours académique international, de Chalon-sur-Saône à Bruxelles en passant par Gdansk.</p>
           <span class="card-arrow">En savoir plus →</span>
         </a>
 
