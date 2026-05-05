@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Chanon — Professeur de Clarinette & Formation Musicale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0b1026;
+            --navy-light: #141b3d;
+            --navy-mid: #1a2350;
+            --burgundy: #2a0a1b;
+            --ivory: #f5f0e8;
+            --ivory-dark: #e8e0d0;
+            --gold: #c9a84c;
+            --gold-light: #dfc06a;
+            --gold-dark: #a8872e;
+            --white: #fefcf9;
+            --text-dark: #1a1a2e;
+            --text-light: #d4cfc5;
+            --text-muted: #8a8578;
+            --shadow: 0 4px 20px rgba(11, 16, 38, 0.15);
+            --shadow-lg: 0 8px 40px rgba(11, 16, 38, 0.2);
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--navy);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            transition: background var(--transition), box-shadow var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(11, 16, 38, 0.97);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--ivory);
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav a {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width var(--transition);
+        }
+
+        .nav a:hover {
+            color: var(--gold);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+
+        .burger span {
+            width: 26px;
+            height: 2px;
+            background: var(--ivory);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(165deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy-mid) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1920&q=80') center/cover no-repeat;
+            opacity: 0.12;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(transparent, var(--white));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 48px;
+        }
+
+        .hero-label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 36px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            color: var(--ivory);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 560px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            border-radius: 2px;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(201, 168, 76, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--ivory);
+            border: 1px solid rgba(201, 168, 76, 0.5);
+            margin-left: 16px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 480px;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .section-header .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px auto 0;
+        }
+
+        /* ===== TABS SECTION ===== */
+        .tabs-section {
+            background: var(--white);
+        }
+
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 48px;
+            border-bottom: 2px solid var(--ivory-dark);
+            padding-bottom: 0;
+        }
+
+        .tab-btn {
+            padding: 14px 22px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-bottom: -2px;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--navy);
+        }
+
+        .tab-btn.active {
+            color: var(--navy);
+            border-bottom-color: var(--gold);
+            font-weight: 600;
+        }
+
+        .tab-panels {
+            position: relative;
+            min-height: 500px;
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeTab 0.5s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeTab {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .tab-text h3 {
+            font-size: 1.6rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .tab-text .subtitle {
+            font-size: 0.85rem;
+            color: var(--gold-dark);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .tab-text p {
+            color: #4a4a5a;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .tab-media {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .tab-media .image-frame {
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            aspect-ratio: 16/10;
+            position: relative;
+        }
+
+        .tab-media .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .tab-media .image-frame:hover img {
+            transform: scale(1.03);
+        }
+
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: linear-gradient(170deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+        }
+
+        .testimonials .section-header h2 {
+            color: var(--ivory);
+        }
+
+        .testimonials .section-header p {
+            color: var(--text-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(201, 168, 76, 0.12);
+            border-radius: 8px;
+            padding: 36px;
+            transition: all var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(201, 168, 76, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-card .quote-icon {
+            font-size: 2.4rem;
+            color: var(--gold);
+            opacity: 0.4;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.75;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial-author img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(201, 168, 76, 0.3);
+        }
+
+        .testimonial-author .info h4 {
+            font-size: 1rem;
+            color: var(--ivory);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .testimonial-author .info span {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer h4 {
+            font-size: 1rem;
+            color: var(--ivory);
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .footer p,
+        .footer a {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .footer .brand p {
+            margin-bottom: 20px;
+            max-width: 340px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            transition: all var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 24px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: var(--gold);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .tab-content {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--navy);
+                flex-direction: column;
+                padding: 32px 24px;
+                gap: 20px;
+                transform: translateY(-120%);
+                transition: transform var(--transition);
+                border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            }
+
+            .nav.open {
+                transform: translateY(0);
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn-outline {
+                display: none;
+            }
+
+            .tabs-nav {
+                gap: 2px;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .tab-btn {
+                padding: 12px 14px;
+                font-size: 0.75rem;
+            }
+
+            .section {
+                padding: 64px 0;
+            }
+
+            .testimonial-card {
+                padding: 24px;
+            }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+    <div class="container">
+        <a href="#" class="logo">Arthur <span>Chanon</span></a>
+        <nav class="nav" id="nav">
+            <a href="#accueil">Accueil</a>
+            <a href="#enseignement">Enseignement</a>
+            <a href="#temoignages">Avis</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="burger" id="burger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="accueil">
+    <div class="container hero-content">
+        <span class="hero-label">Clarinette & Formation Musicale</span>
+        <h1>La musique est un voyage.<br>Trouvez <em>votre voix</em>.</h1>
+        <p>Cours particuliers de clarinette et de formation musicale pour tous les niveaux, du premier souffle au perfectionnement avancé. Une approche sur mesure, ancrée dans l'exigence et la bienveillance.</p>
+        <div>
+            <a href="#enseignement" class="btn btn-primary">Découvrir les cours</a>
+            <a href="#contact" class="btn btn-outline">Me contacter</a>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&q=80" alt="Clarinette dans un cadre élégant" loading="lazy">
+    </div>
+</section>
+
+<!-- ===== TABS: ENSEIGNEMENT ===== -->
+<section class="section tabs-section" id="enseignement">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Mon Enseignement</h2>
+            <p>Sept piliers pour une formation musicale complète, progressive et passionnante.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="tabs-nav" role="tablist">
+            <button class="tab-btn active" data-tab="0" role="tab">Initiation</button>
+            <button class="tab-btn" data-tab="1" role="tab">Technique</button>
+            <button class="tab-btn" data-tab="2" role="tab">Répertoire</button>
+            <button class="tab-btn" data-tab="3" role="tab">Formation Musicale</button>
+            <button class="tab-btn" data-tab="4" role="tab">Musique d'Ensemble</button>
+            <button class="tab-btn" data-tab="5" role="tab">Scène & Auditions</button>
+            <button class="tab-btn" data-tab="6" role="tab">Perfectionnement</button>
+        </div>
+
+        <div class="tab-panels">
+            <!-- TAB 0: Initiation -->
+            <div class="tab-panel active" data-panel="0">
+                <div class="tab-content">
+                    <div class="tab-text">
+                        <h3>L'Initiation</h3>
+                        <div class="subtitle">Premiers pas avec la clarinette</div>
+                        <p>Le premier contact avec l'instrument est un moment fondateur. Mon approche de l'initiation repose sur un principe simple : chaque élève doit ressentir du plaisir dès les premières notes. Avant même d'aborder la lecture de partitions, nous travaillons la posture, la respiration et l'émission du son de manière ludique et progressive.</p>
+                        <p>Je m'adapte à chaque profil, que l'élève soit un enfant curieux de sept ans ou un adulte qui réalise un rêve longtemps repoussé. Les premières semaines sont consacrées à la découverte de l'instrument : son montage, son entretien, la formation de l'embouchure et les premiers exercices de souffle. Nous abordons ensuite les premières mélodies simples, choisies pour leur caractère motivant.</p>
+                        <p>L'objectif de cette phase n'est pas la performance, mais la construction d'une relation saine et joyeuse avec la musique. Un élève qui prend plaisir à jouer est un élève qui progresse. C'est pourquoi chaque séance intègre des moments d'écoute active, de jeu et de découverte sonore, afin de nourrir la curiosité musicale qui sera le moteur de tout l'apprentissage à venir.</p>
+                    </div>
+                    <div class="tab-media">
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=700&q=80" alt="Clarinettiste en cours" loading="lazy">
+                        </div>
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1461784121038-f088ca1e7714?w=700&q=80" alt="Premiers pas en musique" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 1: Technique -->
+            <div class="tab-panel" data-panel="1">
+                <div class="tab-content">
+                    <div class="tab-text">
+                        <h3>La Technique Instrumentale</h3>
+                        <div class="subtitle">Construire des fondations solides</div>
+                        <p>La technique est le socle sur lequel repose toute expression musicale. Sans une maîtrise solide des fondamentaux, même l'interprétation la plus inspirée restera limitée. C'est pourquoi j'accorde une attention particulière au travail technique, tout en veillant à ce qu'il reste toujours au service de la musicalité.</p>
+                        <p>Nous travaillons méthodiquement les gammes, arpèges et intervalles dans toutes les tonalités, en variant les articulations (legato, staccato, détaché) et les nuances. Le registre est progressivement élargi, du chalumeau au clairon puis à l'aigu, avec un soin particulier apporté à l'homogénéité du timbre sur toute la tessiture de l'instrument.</p>
+                        <p>Le doigté, la souplesse de l'embouchure, la gestion du souffle et la qualité du son sont travaillés à travers des études ciblées issues des grands maîtres de la pédagogie clarinettistique : Rose, Klosé, Uhl, Jeanjean. Chaque difficulté technique est décomposée, contextualisée et intégrée progressivement afin d'éviter les tensions inutiles et de favoriser un jeu fluide et détendu.</p>
+                    </div>
+                    <div class="tab-media">
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=700&q=80" alt="Technique instrumentale" loading="lazy">
+                        </div>
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=700&q=80" alt="Travail technique musical" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Répertoire -->
+            <div class="tab-panel" data-panel="2">
+                <div class="tab-content">
+                    <div class="tab-text">
+                        <h3>Le Répertoire</h3>
+                        <div class="subtitle">Explorer quatre siècles de musique</div>
+                        <p>La clarinette possède l'un des répertoires les plus riches et les plus variés de tous les instruments à vent. Du classicisme mozartien au jazz contemporain, en passant par le romantisme, l'impressionnisme et les musiques du monde, chaque époque et chaque style offrent des possibilités expressives uniques que nous explorons ensemble.</p>
+                        <p>Le choix du répertoire est un moment clé de l'enseignement. Il doit à la fois correspondre au niveau technique de l'élève, stimuler sa progression et nourrir sa sensibilité artistique. Je puise dans un catalogue vaste et éclectique : les sonates de Brahms, le concerto de Mozart, les pièces de Messager, Debussy et Poulenc, mais aussi des compositeurs plus récents ou des transcriptions de jazz et de musiques populaires.</p>
+                        <p>Chaque oeuvre est replacée dans son contexte historique et stylistique. Nous analysons ensemble la structure, les intentions du compositeur, les traditions d'interprétation. Ce travail d'écoute et de réflexion nourrit une interprétation personnelle et informée, bien au-delà de la simple lecture de notes. L'objectif est de former non seulement un instrumentiste compétent, mais aussi un musicien cultivé et curieux.</p>
+                    </div>
+                    <div class="tab-media">
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=700&q=80" alt="Partitions et répertoire" loading="lazy">
+                        </div>
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=700&q=80" alt="Clarinette et partitions" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Formation Musicale -->
+            <div class="tab-panel" data-panel="3">
+                <div class="tab-content">
+                    <div class="tab-text">
+                        <h3>La Formation Musicale</h3>
+                        <div class="subtitle">Comprendre pour mieux interpréter</div>
+                        <p>La formation musicale, souvent perçue comme une discipline austère, est en réalité la clé de voûte d'un apprentissage musical complet et durable. Lire une partition, comprendre un rythme, identifier une tonalité, entendre intérieurement une mélodie avant de la jouer : autant de compétences qui transforment un exécutant en véritable musicien.</p>
+                        <p>Mon enseignement de la formation musicale est pensé en lien direct avec la pratique instrumentale. Chaque notion théorique est immédiatement mise en application sur la clarinette, ce qui lui donne du sens et facilite sa mémorisation. Le solfège rythmique, la lecture de clés, l'analyse harmonique et le relevé mélodique sont abordés de manière progressive et toujours connectée au répertoire travaillé en cours.</p>
+                        <p>Je propose également des exercices d'écoute active, de dictée musicale et de chant intérieur qui développent l'oreille et la mémoire auditive. Ces compétences, souvent sous-estimées, sont pourtant essentielles pour jouer en ensemble, improviser, ou simplement prendre plus de plaisir à écouter de la musique. La théorie n'est jamais une fin en soi : elle est un outil au service de l'expression.</p>
+                    </div>
+                    <div class="tab-media">
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?w=700&q=80" alt="Formation musicale" loading="lazy">
+                        </div>
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1532649538693-f3a2ec1bf8bd?w=700&q=80" alt="Etude de solfege" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: Musique d'Ensemble -->
+            <div class="tab-panel" data-panel="4">
+                <div class="tab-content">
+                    <div class="tab-text">
+                        <h3>La Musique d'Ensemble</h3>
+                        <div class="subtitle">Le plaisir de jouer ensemble</div>
+                        <p>La musique est avant tout un art du partage. Si le travail individuel est indispensable, c'est dans la pratique collective que le musicien trouve souvent sa plus grande source de motivation et d'épanouissement. Jouer avec d'autres, c'est apprendre à écouter, à s'adapter, à respirer ensemble et à construire un son commun.</p>
+                        <p>Je propose régulièrement à mes élèves des sessions de musique de chambre, adaptées à leur niveau. Duos, trios, quatuors : chaque formation offre des défis spécifiques en termes d'intonation, de justesse, d'équilibre sonore et de synchronisation rythmique. Ces séances sont aussi l'occasion de travailler le répertoire chambriste, d'une richesse incroyable pour les vents.</p>
+                        <p>Au-delà de l'aspect technique, la musique d'ensemble développe des qualités humaines précieuses : l'écoute de l'autre, la patience, le sens du compromis et la générosité. Mes élèves qui participent à ces ateliers constatent unanimement un bond dans leur progression individuelle, car le jeu collectif révèle et corrige des défauts que le travail solitaire ne permet pas toujours de détecter.</p>
+                    </div>
+                    <div class="tab-media">
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=700&q=80" alt="Musique d'ensemble" loading="lazy">
+                        </div>
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=700&q=80" alt="Orchestre et musique de chambre" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: Scène & Auditions -->
+            <div class="tab-panel" data-panel="5">
+                <div class="tab-content">
+                    <div class="tab-text">
+                        <h3>Scène & Auditions</h3>
+                        <div class="subtitle">Se préparer à l'essentiel</div>
+                        <p>Le moment du concert ou de l'audition est l'aboutissement de semaines, parfois de mois de travail. C'est aussi un moment de vulnérabilité où le trac peut compromettre des heures de préparation. Mon rôle est de vous accompagner vers la scène avec confiance, en vous donnant les outils pour gérer le stress et donner le meilleur de vous-même le jour J.</p>
+                        <p>La préparation scénique commence bien en amont de l'événement. Nous travaillons la mémorisation, la concentration, la gestion de l'énergie et la visualisation positive. Je propose des mises en situation régulières — mini-concerts devant d'autres élèves, enregistrements vidéo, simulations de jury — qui permettent de se familiariser progressivement avec la pression de la performance.</p>
+                        <p>J'aborde également les aspects pratiques souvent négligés : comment s'échauffer le jour d'un concert, comment adapter son jeu à l'acoustique d'une salle, comment gérer son matériel (anches, instrument) en situation de stress. Pour les élèves qui préparent des concours ou des examens d'entrée en conservatoire, je propose un accompagnement personnalisé incluant le choix du programme, la gestion du temps et la préparation mentale spécifique à ces épreuves.</p>
+                    </div>
+                    <div class="tab-media">
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80" alt="Scène et concert" loading="lazy">
+                        </div>
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=700&q=80" alt="Salle de concert" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: Perfectionnement -->
+            <div class="tab-panel" data-panel="6">
+                <div class="tab-content">
+                    <div class="tab-text">
+                        <h3>Le Perfectionnement</h3>
+                        <div class="subtitle">Repousser ses propres limites</div>
+                        <p>Le perfectionnement s'adresse aux clarinettistes avancés qui souhaitent franchir un cap dans leur pratique. Qu'il s'agisse de préparer un concours international, d'intégrer un orchestre professionnel ou simplement d'approfondir un aspect spécifique de leur jeu, je propose un accompagnement exigeant et personnalisé, adapté aux objectifs de chaque musicien.</p>
+                        <p>À ce niveau, le travail porte sur les subtilités : la palette de couleurs sonores, le phrasé, la projection, l'intonation dans les registres extrêmes, la virtuosité des passages rapides. Nous explorons les nuances de style propres à chaque période et chaque compositeur, en nous appuyant sur l'analyse des grands interprètes et sur une connaissance approfondie des traditions d'exécution.</p>
+                        <p>Je m'investis particulièrement dans le développement de l'identité artistique de chaque élève avancé. Au-delà de la maîtrise technique, c'est la singularité de l'interprétation qui fait la différence dans une carrière musicale. Nous travaillons ensemble à définir et à affiner une vision personnelle de chaque oeuvre, nourrie par la culture, l'écoute et une réflexion constante sur le sens profond de la musique que nous servons.</p>
+                    </div>
+                    <div class="tab-media">
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=700&q=80" alt="Perfectionnement musical" loading="lazy">
+                        </div>
+                        <div class="image-frame">
+                            <img src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=700&q=80" alt="Musicien en perfectionnement" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section testimonials" id="temoignages">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Ce Que Disent Mes Eleves</h2>
+            <p>Des parcours variés, une passion commune.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <div class="quote-icon">&laquo;</div>
+                <p>J'ai commencé la clarinette à 42 ans, persuadée qu'il était trop tard. Arthur a su me prouver le contraire avec une patience et une pédagogie remarquables. Trois ans plus tard, je joue dans un ensemble amateur et chaque répétition est un bonheur. Il a cette capacité rare de rendre accessible ce qui semble complexe, sans jamais sacrifier l'exigence.</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Claire Dumont">
+                    <div class="info">
+                        <h4>Claire Dumont</h4>
+                        <span>Eleve adulte, 3 ans de pratique</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <div class="quote-icon">&laquo;</div>
+                <p>Notre fils Lucas a intégré le conservatoire cette année grâce à la préparation d'Arthur. Au-delà de la technique, il lui a transmis une vraie passion pour la musique et une discipline de travail qui lui sert dans tous les domaines. Les cours sont toujours stimulants, jamais rébarbatifs, et Lucas attend chaque semaine avec impatience.</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Thomas et Nathalie Mercier">
+                    <div class="info">
+                        <h4>Thomas & Nathalie Mercier</h4>
+                        <span>Parents d'eleve, entree au CRR</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <div class="quote-icon">&laquo;</div>
+                <p>En tant qu'etudiante en musicologie, les cours de formation musicale d'Arthur ont completement transforme ma comprehension des oeuvres. Son approche analytique, toujours liee a la pratique, m'a permis de developper une oreille que je ne soupconnais pas. Ses explications sont claires, imagees, et il sait exactement quand pousser et quand encourager.</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Manon Lefebvre">
+                    <div class="info">
+                        <h4>Manon Lefebvre</h4>
+                        <span>Etudiante en musicologie</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <div class="quote-icon">&laquo;</div>
+                <p>Je prepare le CNSM et Arthur m'accompagne depuis deux ans dans cette preparation intensive. Sa connaissance du repertoire, son exigence musicale et sa bienveillance font de lui un pedagogue exceptionnel. Il m'a aide a developper ma propre identite sonore et a aborder les epreuves avec serenite. Je lui dois enormement dans mon parcours.</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Raphaël Girard">
+                    <div class="info">
+                        <h4>Raphael Girard</h4>
+                        <span>Preparation concours CNSM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="brand">
+                <h4 class="logo" style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:16px;">Arthur <span style="color:var(--gold); font-style:italic;">Chanon</span></h4>
+                <p>Professeur de clarinette et de formation musicale, diplome du CNSMD de Lyon. Passionné par la transmission et convaincu que la musique est accessible à tous ceux qui s'en donnent les moyens.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0b1026"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#enseignement">Enseignement</a></li>
+                    <li><a href="#temoignages">Temoignages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                    <span>06 12 34 56 78</span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>arthur.chanon@email.fr</span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Lyon, France</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arthur Chanon. Tous droits reserves.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    // === Sticky header shadow on scroll ===
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // === Mobile menu toggle ===
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('active');
+        nav.classList.toggle('open');
+    });
+
+    // Close nav on link click
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('active');
+            nav.classList.remove('open');
+        });
+    });
+
+    // === Tabs ===
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.dataset.tab;
+
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabPanels.forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            document.querySelector(`.tab-panel[data-panel="${target}"]`).classList.add('active');
+        });
+    });
+
+    // === Scroll Reveal ===
+    const reveals = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // === Smooth scroll for anchor links ===
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                const offset = header.offsetHeight;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

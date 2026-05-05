@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:images.unsplash.com)",
+      "WebFetch(domain:picsum.photos)",
+      "WebFetch(domain:cdn.pixabay.com)",
+      "WebFetch(domain:upload.wikimedia.org)",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "Bash(echo \"$TEMP\")",
+      "Read(//c/gui/web/2026/ArthurChanon2/$TEMP/**)",
+      "Bash(cygpath:*)"
+    ]
+  }
+}
