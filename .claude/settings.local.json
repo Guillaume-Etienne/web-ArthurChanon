@@ -9,7 +9,9 @@
       "WebFetch(domain:unsplash.com)",
       "Bash(echo \"$TEMP\")",
       "Read(//c/gui/web/2026/ArthurChanon2/$TEMP/**)",
-      "Bash(cygpath:*)"
+      "Bash(cygpath:*)",
+      "Bash(npx astro *)",
+      "Bash(Start-Process -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -NoNewWindow)"
     ]
   }
 }
