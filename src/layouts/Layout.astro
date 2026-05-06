@@ -107,7 +107,7 @@ function isActive(href: string) {
         </div>
       </div>
 
-      <div>
+      <div class="footer-nav">
         <h4>Navigation</h4>
         <ul class="footer-links">
           {navLinks.map(({ href, label }) => (
@@ -177,6 +177,16 @@ function isActive(href: string) {
   nav.querySelectorAll('.dropdown-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       btn.closest('.nav-item')!.classList.toggle('open');
+    });
+  });
+
+  // Sur mobile, le lien parent du dropdown toggle l'accordéon (pas de navigation)
+  nav.querySelectorAll('.has-dropdown > a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        link.closest('.nav-item')!.classList.toggle('open');
+      }
     });
   });
 
