@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import eventsImg from '../pics/events.jpg';
 ---
 
 <Layout title="Événements & Booking" description="Prestations de clarinette solo pour événements privés et professionnels — soirées, mariages, galas, cérémonies — à Bruxelles, en Belgique et en France.">
@@ -17,7 +18,12 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="bio-intro reveal">
         <div class="bio-intro-image">
-          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=700&q=80" alt="Prestation de clarinette en concert" loading="lazy">
+          <img
+            src={eventsImg.src}
+            alt="Arthur Reynaud-Chanon en prestation"
+            loading="lazy"
+            style="transform:scale(1.08); object-fit:cover; object-position:center; width:100%; height:100%;"
+          >
         </div>
         <div class="bio-intro-text">
           <span class="hero-label" style="color:var(--gold-dark)">Orchestre, chambre & solo</span>

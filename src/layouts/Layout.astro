@@ -4,10 +4,21 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: 'website' | 'article';
 }
 
-const { title, description = "Professeur de clarinette et formation musicale à Lyon" } = Astro.props;
+const {
+  title,
+  description = "Professeur de clarinette et de formation musicale — cours en présentiel et à distance, à Bruxelles, en Belgique et en France.",
+  image = "/og-arthur.jpg",
+  type = "website",
+} = Astro.props;
+
 const pathname = Astro.url.pathname;
+const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : '';
+const canonicalUrl = `${siteUrl}${pathname}`;
+const ogImageUrl = `${siteUrl}${image}`;
 
 interface NavChild { href: string; label: string; }
 interface NavItem  { href: string; label: string; children?: NavChild[]; }
@@ -27,7 +38,7 @@ const navLinks: NavItem[] = [
     ],
   },
   { href: '/evenements',  label: 'Événements' },
-  { href: '/complements', label: 'Compléments' },
+  { href: '/complements', label: 'Avis & Vidéos' },
 ];
 
 function isActive(href: string) {
@@ -41,8 +52,52 @@ function isActive(href: string) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} — Arthur Chanon</title>
+
+  <!-- Titre & description -->
+  <title>{title} — Arthur Reynaud-Chanon</title>
   <meta name="description" content={description}>
+  <meta name="author" content="Arthur Reynaud-Chanon">
+
+  <!-- Canonical -->
+  <link rel="canonical" href={canonicalUrl}>
+
+  <!-- Open Graph (partage réseaux sociaux) -->
+  <meta property="og:type" content={type}>
+  <meta property="og:site_name" content="Arthur Reynaud-Chanon">
+  <meta property="og:title" content={`${title} — Arthur Reynaud-Chanon`}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:image" content={ogImageUrl}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_BE">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={`${title} — Arthur Reynaud-Chanon`}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImageUrl}>
+
+  <!-- JSON-LD : fiche personne pour Google -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Arthur Reynaud-Chanon",
+    "jobTitle": "Professeur de clarinette et de formation musicale",
+    "url": siteUrl,
+    "email": "arthur.lamusic@hotmail.fr",
+    "telephone": ["+33633184584", "+32473447186"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bruxelles",
+      "addressCountry": "BE"
+    },
+    "knowsLanguage": ["fr", "en", "pl", "es"],
+    "image": ogImageUrl,
+    "description": "Professeur de clarinette et de formation musicale, clarinettiste soliste et chambriste, disponible pour des prestations événementielles à Bruxelles, en Belgique et en France."
+  })} />
+
+  <!-- Polices -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
