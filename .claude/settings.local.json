@@ -14,7 +14,8 @@
       "Bash(Start-Process -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -NoNewWindow)",
       "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\gui\\\\.claude\\\\projects\\\\C--gui-web-2026-ArthurChanon2\\\\memory\")",
       "Bash(Out-Null)",
-      "PowerShell(New-Item *)"
+      "PowerShell(New-Item *)",
+      "WebFetch(domain:www.pexels.com)"
     ]
   }
 }
